@@ -472,6 +472,7 @@ body { background: var(--white); }
  * #POPULAR
 \*-----------------------------------*/
 
+
 .popular { padding-block: var(--section-padding); }
 
 .popular-list,
@@ -1207,6 +1208,11 @@ address {
   .header.active .navbar-link:is(:hover, :focus) { color: var(--bright-navy-blue); }
 
   .header.active .social-link {
+    color: var(--onyx);
+    border-color: hsla(0, 0%, 0%, 0.15);
+  }
+
+  .header.active .social-links>i {
     color: var(--onyx);
     border-color: hsla(0, 0%, 0%, 0.15);
   }
