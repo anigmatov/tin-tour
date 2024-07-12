@@ -20,13 +20,13 @@
    * colors
    */
 
-  --united-nations-blue: hsl(214, 56%, 58%);
-  --bright-navy-blue: hsl(214, 57%, 51%);
+  --united-nations-blue: hsl(217, 100%, 50%);
+  --bright-navy-blue: hsl(217, 100%, 50%);
   --spanish-gray: hsl(0, 0%, 60%);
   --black-coral: hsl(225, 8%, 42%);
   --oxford-blue: hsl(208, 97%, 12%);
   --yale-blue: hsl(214, 72%, 33%);
-  --blue-ncs: hsl(197, 100%, 36%);
+  --blue-ncs: hsl(217, 100%, 50%);
   --gunmetal: hsl(206, 34%, 20%);
   --gainsboro: hsl(0, 0%, 88%);
   --cultured: hsl(0, 0%, 98%);
@@ -200,6 +200,14 @@ body { background: var(--white); }
   font-size: var(--fs-5);
 }
 
+.logo-text {
+  color: var(--white);
+  font-size: 2em;
+  font-weight: var(--fw-700);
+  text-transform: uppercase;
+
+}
+
 
 
 
@@ -249,7 +257,7 @@ body { background: var(--white); }
   color: var(--white);
 }
 
-.helpline-box .icon-box ion-icon { --ionicon-stroke-width: 40px; }
+.helpline-box .icon-box ion-icon i { --ionicon-stroke-width: 40px; }
 
 .header-top .logo { margin-inline: auto; }
 
@@ -287,6 +295,15 @@ body { background: var(--white); }
 }
 
 .social-link {
+  color: var(--white);
+  padding: 8px;
+  border: 1px solid hsla(0, 0%, 100%, 0.3);
+  border-radius: 50%;
+  font-size: 15px;
+  transition: var(--transition);
+}
+
+.social-links>i {
   color: var(--white);
   padding: 8px;
   border: 1px solid hsla(0, 0%, 100%, 0.3);
@@ -585,7 +602,7 @@ body { background: var(--white); }
   font-size: var(--fs-8);
 }
 
-.meta-box > ion-icon {
+.meta-box > ion-icon i {
   color: var(--bright-navy-blue);
   font-size: 13px;
 }
@@ -738,7 +755,7 @@ body { background: var(--white); }
   margin-bottom: 10px;
 }
 
-.contact-item ion-icon { --ionicon-stroke-width: 40px; }
+.contact-item ion-icon i { --ionicon-stroke-width: 40px; }
 
 .contact-link,
 address {
@@ -1234,7 +1251,7 @@ address {
 
   .meta-box { --fs-8: 13px; }
 
-  .meta-box > ion-icon { font-size: 15px; }
+  .meta-box > ion-icon i { font-size: 15px; }
 
 
 
