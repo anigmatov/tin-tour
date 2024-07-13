@@ -45,9 +45,79 @@ window.addEventListener("scroll", function () {
 
 });
 
-var swiper = new Swiper(".mySwiper", {
-  navigation: {
-    nextEl: ".swiper-button-next",
-    prevEl: ".swiper-button-prev",
-  },
+
+document.addEventListener('DOMContentLoaded', function() {
+  const slider = document.querySelector('.slider');
+  const slides = Array.from(document.querySelectorAll('.slide'));
+  const prevArrow = document.querySelector('.prev-arrow');
+  const nextArrow = document.querySelector('.next-arrow');
+  let autoScrollInterval;
+
+  const scrollStep = slides[0].offsetWidth + 20; // slide width + gap
+  let scrollPosition = slider.scrollLeft;
+
+  // Duplicate slides at the end for infinite scroll effect
+  function cloneSlides() {
+    slides.forEach(slide => {
+      const clone = slide.cloneNode(true);
+      slider.appendChild(clone);
+    });
+  }
+
+  cloneSlides();
+
+  function scrollNext() {
+    scrollPosition += scrollStep;
+    slider.scrollTo({
+      left: scrollPosition,
+      behavior: 'smooth'
+    });
+    if (scrollPosition >= slider.scrollWidth / 2) {
+      scrollPosition = 0;
+      slider.scrollTo({
+        left: scrollPosition,
+        behavior: 'auto'
+      });
+    }
+  }
+
+  function scrollPrev() {
+    if (scrollPosition <= 0) {
+      scrollPosition = slider.scrollWidth / 2;
+      slider.scrollTo({
+        left: scrollPosition,
+        behavior: 'auto'
+      });
+    }
+    scrollPosition -= scrollStep;
+    slider.scrollTo({
+      left: scrollPosition,
+      behavior: 'smooth'
+    });
+  }
+
+  function startAutoScroll() {
+    autoScrollInterval = setInterval(scrollNext, 1000);
+  }
+
+  function stopAutoScroll() {
+    clearInterval(autoScrollInterval);
+  }
+
+  prevArrow.addEventListener('click', () => {
+    stopAutoScroll();
+    scrollPrev();
+    startAutoScroll();
+  });
+
+  nextArrow.addEventListener('click', () => {
+    stopAutoScroll();
+    scrollNext();
+    startAutoScroll();
+  });
+
+  slider.addEventListener('mouseover', stopAutoScroll);
+  slider.addEventListener('mouseout', startAutoScroll);
+
+  startAutoScroll();
 });
