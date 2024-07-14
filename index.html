@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Tourly - Travel agancy</title>
+    <title>Tin - Tour</title>
 
     <!-- 
     - favicon
@@ -132,7 +132,7 @@
             </ul>
           </nav>
 
-          <button class="btn btn-primary">Sayohat qilish</button>
+          <button class="btn btn-primary open-form-btn">Sayohat qilish</button>
         </div>
       </div>
     </header>
@@ -302,7 +302,7 @@
                     <div class="rating"><i class="ri-star-fill"></i> 4.8</div>
                     <div class="booking__price">
                       <div class="price"> $600 <span>Boshlab</span></div>
-                      <button class="book__now">Tanlash</button>
+                      <button class="book__now open-form-btn">Tanlash</button>
                     </div>
                   </div>
                 </div>
@@ -313,7 +313,7 @@
                     <div class="rating"><i class="ri-star-fill"></i> 4.8</div>
                     <div class="booking__price">
                       <div class="price">$450 <span>Boshlab</span></div>
-                      <button class="book__now">Tanlash</button>
+                      <button class="book__now open-form-btn">Tanlash</button>
                     </div>
                   </div>
                 </div>
@@ -324,7 +324,7 @@
                     <div class="rating"><i class="ri-star-fill"></i> 4.7</div>
                     <div class="booking__price">
                       <div class="price">$650 <span>Boshlab</span> </div>
-                      <button class="book__now">Tanlash</button>
+                      <button class="book__now open-form-btn">Tanlash</button>
                     </div>
                   </div>
                 </div>
@@ -335,7 +335,7 @@
                     <div class="rating"><i class="ri-star-fill"></i> 4.4</div>
                     <div class="booking__price">
                       <div class="price">$590 <span>Boshlab</span></div>
-                      <button class="book__now">Tanlash</button>
+                      <button class="book__now open-form-btn">Tanlash</button>
                     </div>
                   </div>
                 </div>
@@ -346,7 +346,7 @@
                     <div class="rating"><i class="ri-star-fill"></i> 4.6</div>
                     <div class="booking__price">
                       <div class="price">$590 <span>Boshlab</span> </div>
-                      <button class="book__now">Tanlash</button>
+                      <button class="book__now open-form-btn">Tanlash</button>
                     </div>
                   </div>
                 </div>
@@ -357,8 +357,8 @@
                     <div class="rating"><i class="ri-star-fill"></i> 4.2</div>
                     <div class="booking__price">
                       <div class="price">$590 <span>Boshlab</span> </div>
-                      <button class="book__now">Tanlash</button>
-                    </div>
+                      <button class="book__now open-form-btn">Tanlash</button>
+                    </div> 
                   </div>
                 </div>
                 <div class="trip__card">
@@ -368,7 +368,7 @@
                     <div class="rating"><i class="ri-star-fill"></i> 4.4</div>
                     <div class="booking__price">
                       <div class="price">$690 <span>Boshlab</span> </div>
-                      <button class="book__now">Tanlash</button>
+                      <button class="book__now open-form-btn">Tanlash</button>
                     </div>
                   </div>
                 </div>
@@ -379,7 +379,7 @@
                     <div class="rating"><i class="ri-star-fill"></i> 4.7</div>
                     <div class="booking__price">
                       <div class="price">$990 <span>Boshlab</span> </div>
-                      <button class="book__now">Tanlash</button>
+                      <button class="book__now open-form-btn">Tanlash</button>
                     </div>
                   </div>
                 </div>
@@ -390,7 +390,7 @@
                     <div class="rating"><i class="ri-star-fill"></i> 4.4</div>
                     <div class="booking__price">
                       <div class="price">$1350 <span>Boshlab</span></div>
-                      <button class="book__now">Tanlash</button>
+                      <button class="book__now open-form-btn">Tanlash</button>
                     </div>
                   </div>
                 </div>
@@ -401,7 +401,7 @@
                     <div class="rating"><i class="ri-star-fill"></i> 4.6</div>
                     <div class="booking__price">
                       <div class="price">$1400 <span>Boshlab</span> </div>
-                      <button class="book__now">Tanlash</button>
+                      <button class="book__now open-form-btn">Tanlash</button>
                     </div>
                   </div>
                 </div>
@@ -412,7 +412,7 @@
                     <div class="rating"><i class="ri-star-fill"></i> 4.9</div>
                     <div class="booking__price">
                       <div class="price">$1700 <span>Boshlab</span> </div>
-                      <button class="book__now">Tanlash</button>
+                      <button class="book__now open-form-btn">Tanlash</button>
                     </div>
                   </div>
                 </div>
@@ -521,107 +521,102 @@
         </section>
         
 
-<!-- Button to trigger the popup -->
-<button id="book-now-btn">Book Now</button>
+<div class="overlay" id="overlay" onclick="hidePopupForm()"></div>
 
-<!-- Popup form -->
 <div id="popup-form" class="popup-form">
+    <div class="popup-content">
+        <h2>O'z ma'lumotlaringizni kiriting</h2>
+        <form id="booking-form">
+            <div class="form-row">
+                <div class="half-width">
+                    <label for="name">Ism:</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="half-width">
+                    <label for="surname">Familiya:</label>
+                    <input type="text" id="surname" name="surname" required>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="half-width">
+                    <label for="phone">Telefon raqamingiz:</label>
+                    <input type="tel" id="phone" name="phone" required>
+                </div>
+                <div class="half-width">
+                    <label for="email">Elektron Pochta:</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="half-width">
+                    <label for="travel-type">Sizning tanlovingiz:</label>
+                    <select id="travel-type" name="travel-type">
+                        <option value="Dubai, BAA">Dubai, BAA</option>
+                        <option value="Istanbul, Turkiya">Istanbul, Turkiya</option>
+                        <option value="Antalya, Turkiya">Antalya, Turkiya</option>
+                        <option value="Umra Safari, Saudiya Arabistoni">Umra Safari, Saudiya Arabistoni</option>
+                        <option value="Bodrum, Turkiya">Bodrum, Turkiya</option>
+                        <option value="Sharm El Sheikh, Misr">Sharm El Sheikh, Misr</option>
+                        <option value="Baku, Ozayrbajon">Baku, Ozayrbajon</option>
+                        <option value="Tblilisi, Gruziya">Tblilisi, Gruziya</option>
+                        <option value="Borjomi, Gruziya">Borjomi, Gruziya</option>
+                        <option value="Pxuket, Tailand">Pxuket, Tailand</option>
+                        <option value="Fukok, Viyetnam">Fukok, Viyetnam</option>
+                        <option value="Maldiv orollari">Maldiv orollari</option>
+
+
+
+
+
+
+                    </select>
+                </div>
+                <div class="half-width">
+                    <label for="travel-class">Sayohat Turi:</label>
+                    <select id="travel-class" name="travel-class">
+                        <option value="Ekonom">Ekonom</option>
+                        <option value="Biznes">Biznes</option>
+                        <option value="Birinchi klass">Birinchi klass</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="half-width">
+                    <label for="price-start">Boshlang'ich Narx ($):</label>
+                    <input type="number" id="price-start" name="price-start">
+                </div>
+                <div class="half-width">
+                    <label for="price-end">Maksimal Narx ($):</label>
+                    <input type="number" id="price-end" name="price-end">
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="half-width">
+                    <label for="start-date">Boshlanish sanasi:</label>
+                    <input type="date" id="start-date" name="start-date">
+                </div>
+                <div class="half-width">
+                    <label for="end-date">Yakuniy sana:</label>
+                    <input type="date" id="end-date" name="end-date">
+                </div>
+            </div>
+            <div class="buttons-form">
+                <button type="submit" class="submit-btn">Yuborish</button>
+                <button type="button" class="cancel-btn" onclick="hidePopupForm()">Bekor Qilish</button>
+            </div>
+        </form>
+        <p id="submit-message" style="display:none;"></p>
+    </div>
+</div>
+
+<div id="success-popup" class="popup-form">
   <div class="popup-content">
-    <h2>Contact Form</h2>
-    <form id="booking-form">
-      <div class="form-row">
-        <div class="half-width">
-          <label for="name">Name:</label>
-          <input type="text" id="name" name="name" required>
-        </div>
-        <div class="half-width">
-          <label for="surname">Surname:</label>
-          <input type="text" id="surname" name="surname" required>
-        </div>
-      </div>
-      <div class="form-row">
-        <div class="half-width">
-          <label for="phone">Phone Number:</label>
-          <input type="tel" id="phone" name="phone" required>
-        </div>
-        <div class="half-width">
-          <label for="email">Email:</label>
-          <input type="email" id="email" name="email" required>
-        </div>
-      </div>
-      <div class="form-row">
-        <div class="half-width">
-          <label for="travel-type">Type of Travel:</label>
-          <select id="travel-type" name="travel-type">
-            <option value="Adventure">Adventure</option>
-            <option value="Beach">Beach</option>
-            <option value="City">City</option>
-            <option value="Mountain">Mountain</option>
-            <option value="Cruise">Cruise</option>
-          </select>
-        </div>
-        <div class="half-width">
-          <label for="travel-class">Class of Travel:</label>
-          <select id="travel-class" name="travel-class">
-            <option value="Economy">Economy</option>
-            <option value="Business">Business</option>
-            <option value="First Class">First Class</option>
-          </select>
-        </div>
-      </div>
-      <div class="form-row">
-        <div class="half-width">
-          <label for="price-start">Starting Price ($):</label>
-          <input type="number" id="price-start" name="price-start">
-        </div>
-        <div class="half-width">
-          <label for="price-end">Highest Price ($):</label>
-          <input type="number" id="price-end" name="price-end">
-        </div>
-      </div>
-      <div class="form-row">
-        <div class="half-width">
-          <label for="start-date">Start Date:</label>
-          <input type="date" id="start-date" name="start-date">
-        </div>
-        <div class="half-width">
-          <label for="end-date">End Date:</label>
-          <input type="date" id="end-date" name="end-date">
-        </div>
-      </div>
-      <div class="buttons-form">
-        <button type="submit" class="submit-btn">Submit</button>
-        <button type="button" class="cancel-btn" onclick="closePopupForm()">Cancel</button>
-      </div>
-    </form>
-    <p id="submit-message" style="display:none;">Thanks! We will contact you soon.</p>
+      <h2>Ma'lumotlaringiz qabul qilindi</h2>
+      <p>Rahmat! Tez orada operatorlarimiz siz bilan bog'lanishadi.</p>
+      <button type="button" class="close-success-btn" onclick="hideSuccessPopup()">Chiqish</button>
   </div>
 </div>
 
-
-        <!-- 
-        - #CTA
-      -->
-
-        <!-- <section class="cta" id="contact">
-          <div class="container">
-            <div class="cta-content">
-              <p class="section-subtitle">Call To Action</p>
-
-              <h2 class="h2 section-title">
-                Ready For Unforgatable Travel. Remember Us!
-              </h2>
-
-              <p class="section-text">
-                Fusce hic augue velit wisi quibusdam pariatur, iusto primis, nec
-                nemo, rutrum. Vestibulum cumque laudantium. Sit ornare mollitia
-                tenetur, aptent.
-              </p>
-            </div>
-
-            <button class="btn btn-secondary">Contact Us !</button>
-          </div>
-        </section> -->
       </article>
     </main>
 

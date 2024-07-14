@@ -200,54 +200,81 @@ document.addEventListener('DOMContentLoaded', function() {
 
 // Function to show the popup form
 function showPopupForm() {
-  var popup = document.getElementById("popup-form");
-  popup.style.display = "block";
+  document.getElementById("popup-form").style.display = "block";
+  document.getElementById("overlay").style.display = "block";
 }
 
 // Function to hide the popup form
 function hidePopupForm() {
-  var popup = document.getElementById("popup-form");
-  popup.style.display = "none";
+  document.getElementById("popup-form").style.display = "none";
+  document.getElementById("overlay").style.display = "none";
+}
+
+// Function to show success message popup
+function showSuccessPopup() {
+  document.getElementById("success-popup").style.display = "block";
+  document.getElementById("overlay").style.display = "block";
+}
+
+// Function to hide success message popup
+function hideSuccessPopup() {
+  document.getElementById("success-popup").style.display = "none";
+  document.getElementById("overlay").style.display = "none";
 }
 
 // Handle form submission
 document.getElementById("booking-form").addEventListener("submit", function(event) {
   event.preventDefault();
-  
+
   var formData = new FormData(this);
-  
+
   // Prepare data to send to Google Sheets (replace with your Google Sheets script URL)
-  var scriptURL = 'YOUR_GOOGLE_SHEETS_SCRIPT_URL';
+  var scriptURL = 'https://script.google.com/macros/s/AKfycbx7yQDiV9mUAiZb_BgORaLS6r8-hepxJsb1a3dwOVp3p1diWoJ2F6v5B--mJzY1jvb7AA/exec';
   var data = {
-    name: formData.get('name'),
-    surname: formData.get('surname'),
-    phone: formData.get('phone'),
-    email: formData.get('email'),
-    travelType: formData.get('travel-type'),
-    priceRange: formData.get('price-range'),
-    startDate: formData.get('start-date'),
-    endDate: formData.get('end-date')
+      name: formData.get('name'),
+      surname: formData.get('surname'),
+      phone: formData.get('phone'),
+      email: formData.get('email'),
+      travelType: formData.get('travel-type'),
+      travelClass: formData.get('travel-class'),
+      priceStart: formData.get('price-start'),
+      priceEnd: formData.get('price-end'),
+      startDate: formData.get('start-date'),
+      endDate: formData.get('end-date')
   };
-  
+
   // Send data to Google Sheets using Fetch API
   fetch(scriptURL, { method: 'POST', body: JSON.stringify(data) })
-    .then(response => {
-      console.log('Success!', response);
-      document.getElementById("submit-message").style.display = "block";
-      document.getElementById("booking-form").reset(); // Optional: Reset form after submission
-    })
-    .catch(error => console.error('Error!', error));
+      .then(response => {
+          if (response.ok) {
+              console.log('Success!', response);
+              document.getElementById("submit-message").style.display = "block";
+              document.getElementById("booking-form").reset(); // Optional: Reset form after submission
+              hidePopupForm(); // Close the form popup
+              showSuccessPopup(); // Show success message popup
+          } else {
+              throw new Error('Network response was not ok.');
+          }
+      })
+      .catch(error => {
+          console.error('Error!', error);
+          // Handle error if submission fails
+      });
 });
 
 // Button click event to show popup form
-document.getElementById("book-now-btn").addEventListener("click", function() {
-  showPopupForm();
+document.querySelectorAll('.open-form-btn').forEach(button => {
+  button.addEventListener('click', showPopupForm);
 });
 
 // Close popup form when clicking outside of it
 window.onclick = function(event) {
   var popup = document.getElementById("popup-form");
-  if (event.target == popup) {
-    hidePopupForm();
+  var successPopup = document.getElementById("success-popup");
+  var overlay = document.getElementById("overlay");
+  
+  if (event.target == overlay) {
+      hidePopupForm();
+      hideSuccessPopup();
   }
 };
