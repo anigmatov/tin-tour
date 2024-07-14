@@ -383,6 +383,12 @@ body { background: var(--white); }
   pointer-events: all;
 }
 
+.logo-text-hide{
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 1.5rem;
+  color: blue;
+}
 
 
 
@@ -682,6 +688,12 @@ body { background: var(--white); }
   box-shadow: 5px 5px 30px rgba(0, 0, 0, 0.1);
 }
 
+.trip__card img {
+  width: 400px;
+  height: 300px;
+  object-fit: cover;
+}
+
 .trip__details {
   text-align: left;
   padding: 1rem;
@@ -728,7 +740,7 @@ body { background: var(--white); }
 }
 
 .arrow-card {
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: var(--blue-ncs);
   color: white;
   border: none;
   padding: 10px;
@@ -1216,23 +1228,6 @@ address {
    * TOUR SEARCH
    */
 
-  .tour-search-form {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    align-items: flex-end;
-    gap: 15px;
-  }
-
-  .tour-search-form .input-wrapper { margin-bottom: 0; }
-
-  .tour-search-form .input-field { padding: 16px 20px; }
-
-  .tour-search .btn {
-    grid-column: span 2;
-    margin-top: 20px;
-  }
-
-
 
   /**
    * POPULAR
@@ -1596,12 +1591,19 @@ address {
 
 
 @media (width < 900px) {
+
+
   .trip__grid {
     grid-template-columns: repeat(2, 1fr);
   }
 }
 
 @media (width < 600px) {
+
+  .logo-text{
+    font-size: 1rem;
+  }
+  
   .trip__grid {
     grid-template-columns: repeat(1, 1fr);
   }
